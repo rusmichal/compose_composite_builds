@@ -8,10 +8,10 @@ jobs:
   pr_labeler:
     if: github.event.pull_request.draft == false
     name: Update pr label
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - name: Set ready for review
-        uses: andymckay/labeler@master
+        uses: andymckay/labeler@1.0.4
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
           add-labels: "Ready for review"
