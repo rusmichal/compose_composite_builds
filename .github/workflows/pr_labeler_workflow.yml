@@ -14,7 +14,7 @@ jobs:
         with:
           remove-labels: "Review done, Work in progress"
       - name: Label pull requests
-        uses: abinoda/label-when-approved-action@1.0.5
+        uses: pullreminders/label-when-approved-action@master
         id: approved
         env:
           APPROVALS: "0"
