@@ -3,6 +3,7 @@ name: PR labeler
 on:
   push:
 
+
 jobs:
   pr_labeler:
     if: github.event.pull_request.draft == false
