@@ -3,7 +3,6 @@ name: PR labeler on push
 on:
   push:
 
-
 jobs:
   pr_labeler:
     name: Update pr label
