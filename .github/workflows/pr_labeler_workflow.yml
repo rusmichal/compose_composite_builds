@@ -3,23 +3,15 @@ name: PR labeler
 on:
   push:
 
-
-
 jobs:
   pr_labeler:
     if: github.event.pull_request.draft == false
     name: Update pr label
     runs-on: ubuntu-18.04
     steps:
-      - name: Remove Invalidated Labels
+      - name: Set ready for review
         uses: andymckay/labeler@master
         with:
+          add-labels: "Ready for review"
           remove-labels: "Review done, Work in progress"
-      - name: Label pull requests
-        uses: pullreminders/label-when-approved-action@master
-        id: approved
-        env:
-          APPROVALS: "0"
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ADD_LABEL: "Ready for review"
-          REMOVE_LABEL: ""
+          ignore-if-labeled: true
