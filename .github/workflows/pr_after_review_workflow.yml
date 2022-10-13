@@ -1,0 +1,22 @@
+name: After review labeler
+
+on: pull_request_review
+
+jobs:
+  pr_labeler:
+    name: Update pr label after code review
+    runs-on: ubuntu-latest
+    steps:
+      - name: Remove Invalidated Labels
+        uses: andymckay/labeler@master
+        with:
+          remove-labels: "Review done, Ready for review, Work in progress"
+      - name: Label approved pull requests
+        uses: abinoda/label-when-approved-action@1.0.5
+        id: approved
+        env:
+          APPROVALS: "2"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ADD_LABEL: "Review done"
+          REMOVE_LABEL: ""
+      - run: echo "Approved !!"

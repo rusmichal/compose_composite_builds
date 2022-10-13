@@ -1,0 +1,22 @@
+name: PR labeler
+# This workflow is triggered on pushes to the repository.
+on:
+  push:
+
+jobs:
+  pr_labeler:
+    name: Update pr label
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Remove Invalidated Labels
+        uses: andymckay/labeler@master
+        with:
+          remove-labels: "Review done, Work in progress"
+      - name: Label pull requests
+        uses: abinoda/label-when-approved-action@1.0.5
+        id: approved
+        env:
+          APPROVALS: "0"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ADD_LABEL: "Ready for review"
+          REMOVE_LABEL: ""
