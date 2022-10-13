@@ -12,6 +12,7 @@ jobs:
       - name: Set ready for review
         uses: andymckay/labeler@master
         with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
           add-labels: "Ready for review"
           remove-labels: "Review done, Work in progress"
           ignore-if-labeled: true
